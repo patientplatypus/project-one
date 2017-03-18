@@ -1,0 +1,364 @@
+body {
+  text-transform: uppercase;
+  background: rgb(255, 204, 0); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(right top, rgb(255, 100, 0), rgb(255, 204, 0)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom left, rgb(255, 100, 0), rgb(255, 204, 0)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom left, rgb(255, 100, 0), rgb(255, 204, 0)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom left, rgb(255, 100, 0), rgb(255, 204, 0)); /* Standard syntax */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Rubik Mono One', sans-serif;
+  display:inline-block;
+  float:left;
+  /* width:100%; */
+}
+
+
+.platysoft{
+  margin-top:1%;
+}
+
+/*The vh and vw for viewport
+width and height are not working
+and I don't know why.*/
+.black_overlay {
+  display: none;
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 4001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+.white_content {
+  display: none;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  width: 50vw;
+  height: 50vh;
+  padding: 16px;
+  border: 16px solid orange;
+  background-color: white;
+  z-index: 4002;
+  overflow: auto;
+}
+
+.treeplatypus {
+	text-align: center;
+	font-size: 23px;
+}
+
+
+header {
+  background: rgb(200,100,100);
+  position: fixed;
+  margin: 0;
+  padding:0;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  z-index: 1;
+}
+
+.hamburgerimage {
+  /*display: none;*/
+  height:35px;
+  width:35px;
+  float:right;
+  display:inline-block;
+}
+
+.dropdown{
+  float:right;
+}
+
+
+header h1 {
+  font-size:15px;
+	display: inline-block;
+}
+
+nav {
+  float:right;
+  display:inline-block;
+}
+
+nav ul{
+  list-style:none;
+}
+
+a a:hover, a:active a:link, a:visited {
+  color: #FFAACC;
+  text-decoration: none;
+}
+
+nav ul li{
+  display:inline-block;
+	position:relative;
+  color: #222;
+  padding:2rem 1rem;
+}
+
+ul {
+  transform: translate(-50%, 0);
+}
+
+img {
+ /* display: block; */
+  max-height: 100%;
+  max-width: 100%;
+  width:100%; /* you can use % */
+ /* margin: 0 auto; */
+}
+
+.image {
+	height:95%;
+  padding: 0; 
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imagecontainer{
+	margin-top: 50px;
+	float:left;
+	color:white;
+	background-color:black;
+ }
+
+
+.container{
+	margin-top:1%;
+	margin-bottom:1%;
+	width:100%;
+	float:left;
+	color:white;
+	background-color:black;
+	border-color:green;
+	border-style:solid;
+	border-width: 5px;
+	border-radius: 8px;
+}
+
+h3{
+	background-color:grey;
+  background-size: auto;
+  width:100%;
+}
+
+.expandingbuttons{
+	height:100px;
+	width:100px;
+	display:inline-block;
+	float:right;
+	vertical-align: top;
+}
+
+form {
+	margin-top: 50px;
+}
+
+
+.form-control {
+ 	width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color:black;
+  color:green;
+}
+
+.platy { 
+ /* Good browsers */
+  opacity: 0;
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color:black;
+  color:green;
+}
+
+textarea, select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color:black;
+  color:green;
+  float:left;
+}
+
+input[type=submit] {
+  width: 20%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+span {
+  display: block;
+  overflow: hidden;
+  padding: 0 4px 0 6px
+}
+
+.textbox {
+	width:95%;
+  display:block;
+  margin-right: auto;
+  margin-right: auto;
+}
+
+.checkname {
+	float:left;
+}
+
+.about{
+	position:relative;
+}
+
+label {
+  float: left
+}
+
+.mainimage{
+  position:relative;
+}
+
+.platyimg{    
+  max-height: 100%;
+  max-width: 100%;
+  position:absolute; 
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  -webkit-transform:translate(-50%, -50%);
+  -moz-transform:translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.platyimgright{
+	border-collapse: separate; 
+	width:30%;
+	height:30%;
+	align-content: center;
+	border-color: green;
+	border-style: solid;
+	border:10px;
+	border-radius: 12px;
+  opacity: 0.5;
+}
+
+
+
+/*Try as I might, I just cannot
+center align these images. It is
+something I need to ask about on 
+Monday. */
+
+.haikurow{
+  margin-top:10px;
+  background-color:green;
+}
+
+.img-responsive-wrap {
+  display: block;
+  height: 500px;
+  overflow: hidden;
+}
+
+.haikucontainer img{
+  vertical-align: middle;
+}
+
+
+
+
+
+
+.holderbox{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width:100%;
+  height:120px;
+  float:none;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  border-radius:  10px;
+  border-color: purple;
+  border-style: solid;
+  border-width: 10px;
+}
+
+.leftinfo{
+  text-align: center;
+  align-content: center;
+}
+
+.platy1{
+  display:inline-block;
+}
+
+.platy2{
+  display:none; 
+}
+
+.platy3{
+  display:none;
+}
+
+.platy4{
+  display:none;
+}
+
+.platy5{
+  display:none;
+}
+
+.platy6{
+  display:none;
+}
+
+.carousel{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-height: 360px;
+  max-height: 500px;
+}
+
+.carouselrow {
+  margin-left: auto;
+  margin-right: auto; 
+  min-width: 1200px;
+  /*overflow: auto;*/  
+}
+
+.zindexset {
+	z-index: 3000;
+}
