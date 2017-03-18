@@ -1,6 +1,4 @@
- 
-// save this file as sketch.js
-// Sketch One
+
 var s = function( p ) { // p could be any variable name
   var fillvalue = 0;
   var xover = 0;
@@ -32,7 +30,6 @@ var s = function( p ) { // p could be any variable name
 };
 var myp5 = new p5(s, '.lefttriangle');
 
-// Sketch Two
 var v = function( p ) { 
   var fillvalue = 0;
   var xover = 0;
@@ -65,7 +62,6 @@ var v = function( p ) {
 var myp5 = new p5(v, '.circle');
 
 
-// Sketch Two
 var t = function( p ) { 
   var fillvalue = 0;
   var xover = 0;
@@ -137,8 +133,6 @@ var w = function( p ) {
       counter = 0;
     }
 
-   // console.log("xvalue " + xvalue + " yvalue " + yvalue + " fillvalue " + fillvalue + " counter " + counter);
-
     c = p.color(fillvalue%50,fillvalue%255,fillvalue%255, fillvalue%50);
     p.fill(c);
     p.rect(xvalue,yvalue,5,5);
@@ -165,7 +159,6 @@ if (x.length>0 && linkpressed!=1){
    $(".linkone").offset(function(){
         newPos = new Object();
         var target = $("#lione").offset();
-        //console.log(target);
         newPos.left = target.left;
         newPos.top = target.top + 0.75*($("#lione").height()); ;
         return newPos;
@@ -188,7 +181,6 @@ if (y.length>0 && linkpressed!=2){
     $(".linktwo").offset(function(){
         newPos = new Object();
         var target = $("#litwo").offset();
-        //console.log(target);
         newPos.left = target.left;
         newPos.top = target.top + 0.75*($("#litwo").height()); ;
         return newPos;
@@ -210,7 +202,6 @@ if (z.length>0 && linkpressed!=3){
     $(".linkthree").offset(function(){
         newPos = new Object();
         var target = $("#lithree").offset();
-        //console.log(target);
         newPos.left = target.left + 0.2*($("#lithree").width());
         newPos.top = target.top + 0.75*($("#lithree").height()); 
         return newPos;
@@ -293,7 +284,6 @@ $(window).scroll(function(){
     $(".linkone").offset(function(){
         newPos = new Object();
         var target = $("#lione").offset();
-        //console.log(target);
         newPos.left = target.left;
         newPos.top = target.top + 0.75*($("#lione").height());
         return newPos;
@@ -304,7 +294,6 @@ $(window).scroll(function(){
     $(".linktwo").offset(function(){
         newPos = new Object();
         var target = $("#litwo").offset();
-        //console.log(target);
         newPos.left = target.left;
         newPos.top = target.top + 0.75*($("#litwo").height());
         return newPos;
@@ -315,7 +304,6 @@ $(window).scroll(function(){
     $(".linkthree").offset(function(){
         newPos = new Object();
         var target = $("#lithree").offset();
-        //console.log(target);
         newPos.left = target.left + 0.2*($("#lithree").width());
         newPos.top = target.top + 0.75*($("#lithree").height());
         return newPos;
@@ -326,7 +314,6 @@ $(window).scroll(function(){
       $(".bezier").offset(function(){
         newPos = new Object();
         var target = $("#lione").offset();
-        //console.log(target);
         newPos.left = target.left - 32*($("#lione").width());
         newPos.top = target.top + 0.60*($("#lione").height()); 
         return newPos;
@@ -352,28 +339,19 @@ var h = function( p ) {
   var n = 10;
   var k = 0; 
   var l = 0; 
-  //var c = p.color(200,10,150,100);
 
   p.setup = function() {
     canvas = p.createCanvas(500, 500);
-    //p.textAlign(CENTER);
     canvas.class("haiku");
-    //p.fill(c);
     p.fill(100,100,100);
-    //p.stroke(c);
     p.background(100, 25,255,100);
     p.textSize(50);
     p.frameRate(5);
     p.text(text1,50,50);
-    //p.text("a",250,250);
     p.textSize(40);
-    //p.noStroke();
   };
 
   p.draw = function() {
-  //  p.fill(100,100,100);
-  //  p.text("a",250,250);
-    //p.clear();
     p.background(100, 25,255,100);
     p.textSize(100);
     p.text(text1,50,50);
@@ -421,95 +399,3 @@ var h = function( p ) {
   };
 };
 var myp5 = new p5(h, '.haiku');
-
-
-
-
-
-/*
-
-var i = function(p){
-
-};
-
-var myp5 = new p5(5,'.loadedimage');
-
-    p.push();
-    var angle = TWO_PI/5;
-    p.beginShape();
-      for (var a = 0; a < TWO_PI; a += angle) {
-        var sx = x + cos(a) * 10;
-        var sy = y + sin(a) * 10;
-        p.vertex(sx, sy);
-      } 
-    p.endShape(CLOSE);
-    p.pop();
-
-var r = function(p){
-  var img;
-
-  p.preload = function(){
-    img = p.loadImage("platypus.jpg");
-  }
-
-  p.setup = function(){
-    p.image(img, 0, 0);
-  }
-};
-
-var myp5 = new p5(r,".image1")
-
-
-  var width = windowWidth;
-  var height = windowHeight
-
-var u = function( p ) { 
-
-  var xover = 0;
-  var yover = 0;
-  var fillvalue = 0;
-
-  p.setup = function() {
-    p.createCanvas(width, height);
-    //p.imageMode(CENTER);
-    p.background(200, 204, 400);
-    //p.noStroke();
-  };
-
-  //function windowResized() {
-  //  p.resizeCanvas(windowWidth, windowHeight);
- // }
-
-  p.draw = function() {
-
-    if (xover>windowWidth+20){
-      xover = 0;
-      yover = yover + 10;
-      fillvalue = fillvalue + 1;
-    }
-
-    if (yover>windowHeight+10){
-      yover = 0;
-      fillvalue = fillvalue + 3;
-    }
-
-    if (fillvalue > 255){
-      fillvalue = 0;
-    }
-
-    p.fill(fillvalue);
-
-    p.triangle(10+xover,10+yover, 10+xover, 20+yover, 20+xover, 15+yover);
-
-    fillvalue = fillvalue+.1;
-    xover = xover + 5;
-
-
-    p.fill(100);
-    p.triangle(1000,1000,1000,1000,1000,1000);
-
-  };
-};
-var myp5 = new p5(u, 'content');
-
-*/

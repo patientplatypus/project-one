@@ -60,9 +60,10 @@ header {
   margin: 0;
   padding:0;
   width: 100%;
+  min-width: 100%;
   height: 50px;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 }
 
 .hamburgerimage {
@@ -124,10 +125,13 @@ img {
 }
 
 .imagecontainer{
+  min-width: 100%;
+  margin-bottom: 10px;
 	margin-top: 50px;
 	float:left;
 	color:white;
 	background-color:black;
+  z-index: 5;
  }
 
 
@@ -248,9 +252,12 @@ label {
 
 .mainimage{
   position:relative;
+  min-height: 500px;
+  max-height: 700px;
 }
 
-.platyimg{    
+.platyimg{   
+ 
   max-height: 100%;
   max-width: 100%;
   position:absolute; 
@@ -260,10 +267,11 @@ label {
   -webkit-transform:translate(-50%, -50%);
   -moz-transform:translate(-50%, -50%);
   border-radius: 10px;
+
 }
 
 .platyimgright{
-	border-collapse: separate; 
+	/* border-collapse: separate; */
 	width:30%;
 	height:30%;
 	align-content: center;
@@ -273,33 +281,6 @@ label {
 	border-radius: 12px;
   opacity: 0.5;
 }
-
-
-
-/*Try as I might, I just cannot
-center align these images. It is
-something I need to ask about on 
-Monday. */
-
-.haikurow{
-  margin-top:10px;
-  background-color:green;
-}
-
-.img-responsive-wrap {
-  display: block;
-  height: 500px;
-  overflow: hidden;
-}
-
-.haikucontainer img{
-  vertical-align: middle;
-}
-
-
-
-
-
 
 .holderbox{
   margin-top: 10px;
@@ -345,14 +326,27 @@ Monday. */
   display:none;
 }
 
-.carousel{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  min-height: 360px;
-  max-height: 500px;
+.haikucontainer{
+  min-height:500px;
+  clear:none;
 }
 
-.carouselrow {
+
+.haikurow {
+  margin-top: 10px;
+  background-color: violet;
+}
+
+
+.align{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: auto;
+ /* min-height: 360px;
+  max-height: 500px; */
+}
+
+.alignrow {
   margin-left: auto;
   margin-right: auto; 
   min-width: 1200px;

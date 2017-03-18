@@ -14,7 +14,23 @@ var scrollcounter = 0;
 var linkclicked = 0;
 
 
-$(document).ready(function() {
+$(document).ready(function(evt) {
+
+    //AJAX request to send message to server
+	
+	$('form').on('submit', function (evt) {
+		evt.preventDefault();
+		var sendmessage = $.ajax({
+	        type: 'POST',
+	        url: 'insertcomment.php',
+	        data: $('form').serialize()
+	    });
+		sendmessage.done(function(msg) {
+	  		$(".sentmessage").html( msg );
+		});
+	});
+
+	//end AJAX code
 
     $(".righttriangle").on("click",function(e){
 	    if (imagenumber===6){
@@ -170,7 +186,7 @@ if ($(window).width() < 1000){
     $(".haiku").offset(function(){
         newPos = new Object();
         var target = $(".haikuholder").offset();
-        newPos.left = target.left + (($(".haikuholder").width())-500)/2;
+        newPos.left = target.left + $('.haikuholder').width()/2 - 236;// + 50; //+ 1.25*(($(".haikuholder").width())-500)/2;
         newPos.top = target.top;
         return newPos;
     });
@@ -179,13 +195,11 @@ if ($(window).width() < 1000){
 	    $(".haiku").offset(function(){
 	        newPos = new Object();
 	        var target = $(".haikuholder").offset();
-	        newPos.left = target.left + (($(".haikuholder").width())-500)/2;
+	        newPos.left = target.left + $('.haikuholder').width()/2 - 236;// + 50; //+ 1.25*(($(".haikuholder").width())-500)/2;
 	        newPos.top = target.top;
 	        return newPos;
 	    });
 	});
-
-
 
 
 
@@ -351,4 +365,3 @@ $("#lithree").on("click",function(){
   //  $(".expandingbuttons").remove();
 
 });
-
