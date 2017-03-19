@@ -45,7 +45,7 @@ $(document).ready(function(evt) {
         });
 
         receivemessage.done(function(msg) {
-	  		$(".sentmessage").html( msg );
+	  		$(".receivemessage").html( msg );
 		});
 
 		return false;
