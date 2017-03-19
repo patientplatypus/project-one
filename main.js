@@ -14,6 +14,7 @@ var scrollcounter = 0;
 var linkclicked = 0;
 var holderoffset = $(".holderbox").offset();
 var haikuoffset = $(".haikuholder").offset();
+var platyoffset = $(".platysoft").offset();
 $("#1").css("opacity","1.0");
 
 
@@ -53,13 +54,42 @@ $(document).ready(function() {
 
 	//end AJAX code
 
+
+
+
+	//functions changing the platypus images and information
+	//called by arrow keys, clicked pictures and the timer.
+
+	function changeplatyimage(){
+
+		$(".platyimgright").each(function(){
+			if ($(this).attr("id") == imagenumber){
+				$(this).css("opacity", 1.0);
+				$(".platyimg").attr("src",$(this).attr("src"));
+			}else{
+				$(this).css("opacity", 0.5);
+			}
+		});
+	}
+
+	function changeleftinfo(){
+		$(".leftinfo").css("display", "none");
+		leftinfonumber = ".platy" + imagenumber.toString();
+		$(leftinfonumber).css("display", "inline-block");
+	}
+
+
+
+	//On clicking the triangles it calls functions that change
+	//the info boxes about the platypuses and changes the middle
+	//platypus image. 
+
     $(".righttriangle").on("click",function(e){
 	    if (imagenumber===6){
 			imagenumber=1;
 		}else{
 			imagenumber = imagenumber + 1;
 		}
-		//console.log(imagenumber);
 		changeleftinfo();
     	changeplatyimage();
     });
@@ -70,7 +100,6 @@ $(document).ready(function() {
 		}else{
 			imagenumber = imagenumber - 1;
 		}
-		//console.log(imagenumber);
         changeleftinfo();
     	changeplatyimage();
     });
@@ -80,100 +109,84 @@ $(document).ready(function() {
     $(".circle").on("click",function(e){
     });
 
+    //Changes the middle image when clicking on a right thumbnail.
 
-
-
-function changeplatyimage(){
-
-	$(".platyimgright").each(function(){
-		if ($(this).attr("id") == imagenumber){
-			$(this).css("opacity", 1.0);
-			$(".platyimg").attr("src",$(this).attr("src"));
-		}else{
-			$(this).css("opacity", 0.5);
-		}
+	$(".platyimgright").on("click",function(){
+		imagenumber = parseInt($(this).attr("id"));
+		changeplatyimage();
+		changeleftinfo();
 	});
-}
 
-function changeleftinfo(){
-	$(".leftinfo").css("display", "none");
-	leftinfonumber = ".platy" + imagenumber.toString();
-	$(leftinfonumber).css("display", "inline-block");
-}
+	//changes the middle picture and platypus info on a timer
 
-$(".platyimgright").on("click",function(){
-	imagenumber = parseInt($(this).attr("id"));
-	changeplatyimage();
-	changeleftinfo();
-});
+	setInterval(function(){
 
-setInterval(function(){
+		if (imagenumber===6){
+			imagenumber=1;
+		}else{
+			imagenumber = imagenumber + 1;
+		}
 
-	if (imagenumber===6){
-		imagenumber=1;
-	}else{
-		imagenumber = imagenumber + 1;
+		changeplatyimage();
+		changeleftinfo();
+
+
+	},5000);
+
+
+	//calls a hamburger menu if the window width is less than 1000px
+
+	if ($(window).width() < 1000){
+		$("header").append("<div class='dropdown'></div>")
+		$('.dropdown').append("<button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><img class='hamburgerimage' src='hamburger.png'></button>");
+		$('ul').addClass('dropdown-menu');
+		//$('ul').addClass('pull-left');
+		$('ul').attr("aria-labelledby","dropdownMenu1")
+		$('.dropdown').append($("ul"));
+		$('nav').remove();
 	}
 
-	changeplatyimage();
-	changeleftinfo();
-
-
-},3000);
-
-
-
-if ($(window).width() < 1000){
-	$("header").append("<div class='dropdown'></div>")
-	$('.dropdown').append("<button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><img class='hamburgerimage' src='hamburger.png'></button>");
-	$('ul').addClass('dropdown-menu');
-	//$('ul').addClass('pull-left');
-	$('ul').attr("aria-labelledby","dropdownMenu1")
-	$('.dropdown').append($("ul"));
-	$('nav').remove();
-}
-
-	
- //IMPORTANT......*****
- //Below is how I was trying to do the offset function. It would
- //offset once on page load, and then on window resize it would offset
- //again. For some reason, I do not know why(!) when I put this on my
- //server it did not work. So I have to make a set interval function and
- //set the position every n milliseconds. This is a particularly intensive
- //way of setting position which I REALLY don't like. There were other strange
- //problems which I didn't understand, such as when I update my send table the 
- //positioned elements would slide down the page by the length of the append. This
- //I consider spooky as offset should be calculated from the top (!). I also thought of
- //doing an on-change event for when the offset parent changes position but
- //apparently this is not possible
- //  (http://stackoverflow.com/questions/355015/jquery-event-to-detect-when-element-position-changes)
- //I've wrapped the offsets in if conditions testing if the offset values have changed to make
- //it a LITTLE less computationally intensive.
+		
+	 //IMPORTANT......*****
+	 //Below is how I was trying to do the offset function. It would
+	 //offset once on page load, and then on window resize it would offset
+	 //again. For some reason, I do not know why(!) when I put this on my
+	 //server it did not work. So I have to make a set interval function and
+	 //set the position every n milliseconds. This is a particularly intensive
+	 //way of setting position which I REALLY don't like. There were other strange
+	 //problems which I didn't understand, such as when I update my send table the 
+	 //positioned elements would slide down the page by the length of the append. This
+	 //I consider spooky as offset should be calculated from the top (!). I also thought of
+	 //doing an on-change event for when the offset parent changes position but
+	 //apparently this is not possible
+	 //  (http://stackoverflow.com/questions/355015/jquery-event-to-detect-when-element-position-changes)
+	 //I've wrapped the offsets in if conditions testing if the offset values have changed to make
+	 //it a LITTLE less computationally intensive.
 
 
 
 
- //	  $(".righttriangle").offset(function(){
- //       newPos = new Object();
- //       var target = $(".holderbox").offset();
- //       newPos.left = target.left + 0.7*($(".holderbox").width());
- //       newPos.top = target.top + 0.1*($(".holderbox").height());
- //       console.log($(".holderbox").offset());
- //       console.log($(newPos));
- //       return newPos;
- //     });
-  
-//	$( window ).resize(function() {
-//	    $(".righttriangle").offset(function(){
-//	        newPos = new Object();
-//	        var target = $(".holderbox").offset();
-//	        console.log($(".holderbox").offset());
-//	        newPos.left = target.left + 0.7*($(".holderbox").width());
-//	        newPos.top = target.top + 0.1*($(".holderbox").height());
-//	        console.log($(newPos));
-//	        return newPos;
-//	    });
-//	});
+	 //	  $(".righttriangle").offset(function(){
+	 //       newPos = new Object();
+	 //       var target = $(".holderbox").offset();
+	 //       newPos.left = target.left + 0.7*($(".holderbox").width());
+	 //       newPos.top = target.top + 0.1*($(".holderbox").height());
+	 //       console.log($(".holderbox").offset());
+	 //       console.log($(newPos));
+	 //       return newPos;
+	 //     });
+	  
+	//	$( window ).resize(function() {
+	//	    $(".righttriangle").offset(function(){
+	//	        newPos = new Object();
+	//	        var target = $(".holderbox").offset();
+	//	        console.log($(".holderbox").offset());
+	//	        newPos.left = target.left + 0.7*($(".holderbox").width());
+	//	        newPos.top = target.top + 0.1*($(".holderbox").height());
+	//	        console.log($(newPos));
+	//	        return newPos;
+	//	    });
+	//	});
 
 
 	setInterval(function(){
@@ -219,195 +232,152 @@ if ($(window).width() < 1000){
 		        return newPos;
 	      	  });
 		}
+
+		if (platyoffset != $(".platysoft").offset()){
+			platyoffset = $(".platysoft").offset();
+		    $(".platy").offset(function(){
+		        newPos = new Object();
+		        var target = $(".platysoft").offset();
+		        //console.log(target);
+		        newPos.left = target.left;
+		        newPos.top = target.top;
+		        return newPos;
+		    });	
+		}
+
 	},200);
 
 
+	//changes the opacity of the high def top left platypus picture
+	//to get a blurring effect.
+
+	setInterval(function(){
+
+		opacitynum = opacitynum + addopacityvalue;
+
+		$(".platy").css("opacity", opacitynum.toString());
+
+		if (opacitynum>=1 || opacitynum<=0){
+			addopacityvalue = -1*addopacityvalue;
+		}
+
+	},200);
 
 
-setInterval(function(){
+	//here are the functions that create nav#button classes and append them to
+	//the document so p5js can find them and attach the appropriate canvas.
+	//if i had more than two classes i would consider abstracting them away into 
+	//a function that had the # as an argument.
 
-	opacitynum = opacitynum + addopacityvalue;
 
-	$(".platy").css("opacity", opacitynum.toString());
-
-	if (opacitynum>=1 || opacitynum<=0){
-		addopacityvalue = -1*addopacityvalue;
+	function lionehighlight(){
+		if (!(($(".navonebutton")).length>0)){
+			$(".expandingbuttons").append("<div class='navonebutton'></div>");		
+			if($(".navtwobutton").length>0){
+				$(".navtwobutton").remove();
+			}
+			if($(".navthreebutton").length>0){
+				$(".navthreebutton").remove();
+			}
+		}
 	}
 
-},200);
-
-$(".lithree").on("click",function(){
-
-});
-
-$(window).scroll(function(){
-//	$("id").each(function{
-//		if (($(this).offset().top<=$(window).scrollTop() + 50) && ($(this).offset().top + $(this).height() > $(window).scrollTop() + 50)){
-//			teststring = $(this).attr("id")
-//			$("li a").each(function(){
-//				if ($(this).attr("href") === teststring){
-//					$(".navflare").css("display","inline-block");
-//					scrollname1 = $(this).parent().attr("id");
-//					scrollname2 = scrollname1 + "highlight";	
-//					eval(scrollname2 + "();");
-//				}else{
-//					$(".navflare").css("display","none");
-//				}
-//			});
-//		}
-//	});
-	
-	$("li a").each(function(){
-		if ($(this).attr("href")!=""){
-			teststring = $(this).attr("href");
-			if (($(teststring).offset().top <= $(window).scrollTop() + 50) && ($(teststring).offset().top + $(teststring).height() >= $(window).scrollTop() + 50)){
-				scrollname1 = $(this).parent().attr("id");
-				scrollname2 = scrollname1 + "highlight";	
-				eval(scrollname2 + "();");
-			} else{
-
+	function litwohighlight(){
+		if (!(($(".navtwobutton")).length>0)){
+			$(".expandingbuttons").append("<div class='navtwobutton'></div>");		
+			if($(".navonebutton").length>0){
+				$(".navonebutton").remove();
 			}
+			if($(".navthreebutton").length>0){
+				$(".navthreebutton").remove();
+			}
+		}
+	}
+
+	//function to make smooth scrolling to destination argument.
+
+	function smoothscroll(variable){
+		var thisTarget = $(variable).find(">:first-child").attr('href');
+		var targetOffset = $(thisTarget).offset().top - 49;
+		$("html, body").animate({ scrollTop: targetOffset},2000);
+	}
+
+
+
+	//here is the function that tests whether the window is scrolled
+	//and looks through all the li a's to find the one that matches
+	//the div that is cut off by the top of the window (taking into
+	//account the top bar). if it finds a match it calls the corresponding
+	//highlight function. NOTE: I could not figure out how to "turn off" the
+	//highlighting when the window scrolled to a div that was NOT in the 
+	//li a list. bummer.
+
+	$(window).scroll(function(){
+
+		$("li a").each(function(){
+			if ($(this).attr("href")!=""){
+				teststring = $(this).attr("href");
+				if (($(teststring).offset().top <= $(window).scrollTop() + 50) && ($(teststring).offset().top + $(teststring).height() >= $(window).scrollTop() + 50)){
+					scrollname1 = $(this).parent().attr("id");
+					scrollname2 = scrollname1 + "highlight";	
+					eval(scrollname2 + "();");
+				} else{
+
+				}
+			}
+		});
+
+		teststring = $("#lione").find(">:first-child").attr('href');
+		if ($(teststring).offset().top > $(window).scrollTop() + 51){
+			$(".navflare").css("display","none");
+		} else{
+			$(".navflare").css("display","inline-block");
 		}
 	});
 
-	teststring = $("#lione").find(">:first-child").attr('href');
-	if ($(teststring).offset().top > $(window).scrollTop() + 51){
-		$(".navflare").css("display","none");
-	} else{
-		$(".navflare").css("display","inline-block");
-	}
-});
+
+	//on nav bar link click call smoothscroll to destination link
+
+	$("#lione").on("click",function(){
+		smoothscroll("#lione");
+	});
+
+	$("#litwo").on("click",function(){
+		smoothscroll("#litwo");
+	});
 
 
+	//here is the code that calls the lightbox and also exits
+	//when clicking the black background. currently not filling
+	//entire page, but this is probably a css problem.
+
+	$(".black_overlay").on("click",function(){
+		$(".black_overlay").css("display", "none");
+		$(".white_content").css("display", "none");	
+
+	});
 
 
-function lionehighlight(){
-	if (!(($(".navonebutton")).length>0)){
-		$(".expandingbuttons").append("<div class='navonebutton'></div>");		
-		if($(".navtwobutton").length>0){
-			$(".navtwobutton").remove();
+	$("#lithree").on("click",function(){
+		$(".black_overlay").css("display", "block");
+		$(".white_content").css("display", "block");
+
+		if (!(($(".navthreebutton")).length>0)){
+			$(".expandingbuttons").append("<div class='navthreebutton'></div>");		
+			if($(".navtwobutton").length>0){
+				$(".navtwobutton").remove();
+			}
+			if($(".navonebutton").length>0){
+				$(".navonebutton").remove();
+			}
 		}
-		if($(".navthreebutton").length>0){
-			$(".navthreebutton").remove();
-		}
-	}
-}
-
-function litwohighlight(){
-	if (!(($(".navtwobutton")).length>0)){
-		$(".expandingbuttons").append("<div class='navtwobutton'></div>");		
-		if($(".navonebutton").length>0){
-			$(".navonebutton").remove();
-		}
-		if($(".navthreebutton").length>0){
-			$(".navthreebutton").remove();
-		}
-	}
-}
-
-
-function smoothscroll(variable){
-	var thisTarget = $(variable).find(">:first-child").attr('href');
-	console.log(thisTarget);
-	//console.log(variable);
-	//console.log(thisTarget.offset());
-	var targetOffset = $(thisTarget).offset().top - 49;
-	$("html, body").animate({ scrollTop: targetOffset},2000);
-	//linkclicked = 0;
-	//setInterval(function(){linkclicked = 0},2005);
-}
-
-
-$("#lione").on("click",function(){
-	//linkclicked = 1;
-	//alert("hellothere");
-	//lionehighlight();
-	smoothscroll("#lione");
-	lionehighlight();
-});
-
-
-
-$("#litwo").on("click",function(){
-	//linkclicked = 1;
-	//alert("hellothere");
-	//litwohighlight();
-	smoothscroll("#litwo");
-	litwohighlight();
-});
-
-$(".black_overlay").on("click",function(){
-	$(".black_overlay").css("display", "none");
-	$(".white_content").css("display", "none");	
-
-});
-
-
-$("#lithree").on("click",function(){
-	//alert("hellothere");
-
-	$(".black_overlay").css("display", "block");
-	$(".white_content").css("display", "block");
-
-	if (!(($(".navthreebutton")).length>0)){
-		$(".expandingbuttons").append("<div class='navthreebutton'></div>");		
-		if($(".navtwobutton").length>0){
-			$(".navtwobutton").remove();
-		}
-		if($(".navonebutton").length>0){
-			$(".navonebutton").remove();
-		}
-	}
-	//necessary to return false here
-	//to prevent something called a
-	//post-back error (which somehow
-	//refreshes the page).
-	//I don't understand this.
-	return false;
-	
-});
-
-
-    $(".platy").offset(function(){
-        newPos = new Object();
-        var target = $(".platysoft").offset();
-        //console.log(target);
-        newPos.left = target.left;
-        newPos.top = target.top;
-        return newPos;
-    });
-
-
-    $(window).resize(function(){
-    	$(".platy").offset(function(){
-	        newPos = new Object();
-	        var target = $(".platysoft").offset();
-	        //console.log(target);
-	        newPos.left = target.left;
-	        newPos.top = target.top;
-	        return newPos;
-    	});
-    });
-
-
-
-//    console.log($(".about").width());
-/*
-    if ($(".platysoft").height()>$(".about").height()){
-    	$(".aboutcontainer").height($(".platysoft").height());
-    } else{
-    	$(".aboutcontainer").height($(".about").height());
-    }
-
-    $(window).resize(function(){
-   		if ($(".platysoft").height()>$(".about").height()){
-    		$(".aboutcontainer").height($(".platysoft").height());
-    	} else{
-    		$(".aboutcontainer").height($(".about").height());
-    	}	
-    });
-
-*/
+		//necessary to return false here
+		//to prevent something called a
+		//post-back error (which somehow
+		//refreshes the page).
+		//I don't understand this.
+		return false;
+	});
 
 /*The below was an attempt to resize the blank hanging space at the end of
 the body. The issue here is that I'm appending the canvases to the end of the body
@@ -426,7 +396,6 @@ how to run this AFTER the canvases are offset).*/
     });
 
 */
- //   $(".expandingbuttons").remove();
 
 
 });

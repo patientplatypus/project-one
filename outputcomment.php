@@ -15,7 +15,7 @@ if($result = mysqli_query($db, $sql)){
     if(mysqli_num_rows($result) > 0){
 
 
-        echo "<div class = 'containter'>";
+        echo "<div class = 'container'>";
         echo "<h3>thanks for sending a message!</h3>";
         echo "<p>I've conveniently included a list of everyone else&rsquo;s comments (and emails!) so you can have fun emailing each other about how awesome platypuses are!!!</p>";
         echo "</div>";
