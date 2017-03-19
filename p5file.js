@@ -219,65 +219,6 @@ if (z.length>0 && linkpressed!=3){
 
 
 
-if ($(window).width() > 1500){
-
-var b = function( p ) { 
-  var controlpt1 = 100;
-  var controlpt2 = 600;
-  colorvalue = 0;
-
-  p.setup = function() {
-    canvas = p.createCanvas(1000, 35);
-    canvas.class("bezier");
-    p.background(255,255,255,0);
-    p.noStroke();
-  };
-
-  p.draw = function() {
-
-    if (controlpt1>1000){
-      controlpt1 = 0;
-    }
-    if (controlpt2 > 1000){
-      controlpt2 = controlpt1;
-    }
-  
-    p.bezier(0,35,controlpt1,0,controlpt2,35,1000,0);
-    
-    c = p.color(colorvalue%100,(colorvalue*colorvalue)%255,(colorvalue+10)%255, colorvalue%10);
-    p.fill(c);
-
-    controlpt1 = controlpt1 + 1;
-    controlpt2 = controlpt2 + 3;
-    colorvalue = colorvalue + 7;
-  };
-};
-var myp5 = new p5(b, '.bezier');
-
-$(document).ready(function() {
-
-  
-});
-
-        console.log($(window).width());
-
-        $(".bezier").offset(function(){
-        newPos = new Object();
-        var target = $("#lione").offset();
-        console.log("hiya");
-        console.log(target);
-        newPos.left = target.left - 32*($("#lione").width());
-        newPos.top = target.top + 0.60*($("#lione").height()); 
-        return newPos;
-    });
-
-   $(".bezier").css('position', 'relative');
-   $(".bezier").css('z-index', 3000);
-
-
-}
-
-
 $(window).scroll(function(){
 
   if ($(".linkone").length>0){
@@ -309,16 +250,6 @@ $(window).scroll(function(){
         return newPos;
     });
   }
-
-    if ($(window).width() > 1500){
-      $(".bezier").offset(function(){
-        newPos = new Object();
-        var target = $("#lione").offset();
-        newPos.left = target.left - 32*($("#lione").width());
-        newPos.top = target.top + 0.60*($("#lione").height()); 
-        return newPos;
-      });
-    }
 
 });
 

@@ -1,3 +1,8 @@
+html body {
+ /* height: auto;*/
+  height:100%;
+}
+
 body {
   text-transform: uppercase;
   background: rgb(255, 204, 0); /* For browsers that do not support gradients */
@@ -11,14 +16,52 @@ body {
   display:inline-block;
   float:left;
   font-size: 15px;
-  /* width:100%; */
+  /*height: auto;
+   width:100%; */
+}
+
+.writeus p {
+  font-style: italic;
+  color: red;  
 }
 
 
+.aboutcontainer{
+  min-width: 100%;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  height: auto;
+  float:left;
+  color:white;
+  background-color:black;
+  z-index: 5;
+  font-size: 30px;
+  display: inline-block;
+ }
+
+.aboutcontainer h3{
+  font-size: 40px;
+}
+
+/*
+.about{
+  width: 60%;
+  float:right;
+}
+*/
+
+.platy {
+  /*position:absolute; */
+  float:right;
+  opacity: 0;
+  width:33%;
+}
 
 
 .platysoft{
-  margin-top:1%;
+
+ /*position:absolute;*/
+  width:33%;
 }
 
 /*The vh and vw for viewport
@@ -127,20 +170,6 @@ img {
   overflow: hidden;
 }
 
-.aboutcontainer{
-  min-width: 100%;
-  margin-bottom: 10px;
-  margin-top: 50px;
-  float:left;
-  color:white;
-  background-color:black;
-  z-index: 5;
-  font-size: 30px;
- }
-
-.aboutcontainer h3{
-  font-size: 40px;
-}
 
 .container{
   margin-top:1%;
@@ -162,6 +191,7 @@ h3{
 }
 
 .expandingbuttons{
+  position: absolute;
   height:100px;
   width:100px;
   display:inline-block;
@@ -186,9 +216,6 @@ form {
   color:green;
 }
 
-.platy { 
-  opacity: 0;
-}
 
 textarea {
   width:95%;
@@ -235,9 +262,7 @@ span {
   float:left;
 }
 
-.about{
-  position:relative;
-}
+
 
 /*
 
@@ -347,3 +372,4 @@ label {
 .zindexset {
   z-index: 3000;
 }
+

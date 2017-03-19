@@ -376,8 +376,51 @@ $("#lithree").on("click",function(){
     });
 
 
+    $(window).resize(function(){
+    	$(".platy").offset(function(){
+	        newPos = new Object();
+	        var target = $(".platysoft").offset();
+	        //console.log(target);
+	        newPos.left = target.left;
+	        newPos.top = target.top;
+	        return newPos;
+    	});
+    });
 
 
-  //  $(".expandingbuttons").remove();
+
+//    console.log($(".about").width());
+/*
+    if ($(".platysoft").height()>$(".about").height()){
+    	$(".aboutcontainer").height($(".platysoft").height());
+    } else{
+    	$(".aboutcontainer").height($(".about").height());
+    }
+
+    $(window).resize(function(){
+   		if ($(".platysoft").height()>$(".about").height()){
+    		$(".aboutcontainer").height($(".platysoft").height());
+    	} else{
+    		$(".aboutcontainer").height($(".about").height());
+    	}	
+    });
+
+*/
+
+
+/*
+    var bodyheight = $("body:last-child").offset().top + $("body:last-child").height();
+    $("body").height(bodyheight);
+    $("html").height($("body").height());
+
+    $(window).resize(function(){
+	   var bodyheight = $("body:last-child").offset().top + $("body:last-child").height();
+	   $("body").height(bodyheight);
+	   $("html").height($("body").height());
+    });
+
+*/
+    $(".expandingbuttons").remove();
+
 
 });
