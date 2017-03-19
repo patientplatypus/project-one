@@ -25,6 +25,30 @@ body {
   color: red;  
 }
 
+table {
+  table-layout: fixed; 
+  width:100%;
+  word-wrap: break-word;
+}
+/*
+
+.platypustable {
+  width:100%;
+  color: black;
+  background-color: white;
+}
+*/
+
+
+/*These are all the stylings 
+for the about container. I'm having
+trouble properly wrapping the text around
+the platypus image in a responsive way. I
+can't use absolute positioning as this breaks
+the styling of the image (size and border radius).
+The added high def image expands the size of the
+containing div otherwise. Changing the aboutcontainer
+with js doesnt work either.*/
 
 .aboutcontainer{
   min-width: 100%;

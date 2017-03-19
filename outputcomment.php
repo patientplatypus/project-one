@@ -14,30 +14,38 @@ $sql = "SELECT * FROM platypustable";
 if($result = mysqli_query($db, $sql)){
     if(mysqli_num_rows($result) > 0){
 
-        echo "<div class = 'platypustable'>";
-        echo "<table>";
 
-        //echo "<div style='color:#FFA500;'>";
+        echo "<div class = 'containter'>";
+        echo "<h3>thanks for sending a message!</h3>";
+        echo "<p>I've conveniently included a list of everyone else&rsquo;s comments (and emails!) so you can have fun emailing each other about how awesome platypuses are!!!</p>";
+        echo "</div>";
 
-            echo "<tr>";
-                echo "<th>name</th>";
-                echo "<th>email</th>";
-                echo "<th>comment</th>";
-            echo "</tr>";
 
-        //echo "</div>";
+
+        echo "<div class = 'container'>";
+        echo "<table class='table'>";
+
+        //note that table inverse does nothing
+        //if the text is already light on black 
+        //background
+            echo "<thead class='thead-inverse'>";
+                echo "<tr>";
+                    echo "<th class='col-md-4'>name</th>";
+                    echo "<th class='col-md-4'>email</th>";
+                    echo "<th class='col-md-4'>comment</th>";
+                echo "</tr>";
+            echo "</thead>";
+      
 
         while($row = mysqli_fetch_array($result)){
 
-     //   echo "<div style='color:#8B4513;'>";
-
             echo "<tr>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['comment'] . "</td>";
+                echo "<td class='col-md-4'>" . $row['name'] . "</td>";
+                echo "<td class='col-md-4'>" . $row['email'] . "</td>";
+                echo "<td class='col-md-4'>" . $row['comment'] . "</td>";
             echo "</tr>";
 
-      //  echo "</div>";
+ 
         }
         echo "</table>";
         echo "</div>";

@@ -12,8 +12,8 @@ var scrollname2 = "";
 var teststring  = "";
 var scrollcounter = 0;
 var linkclicked = 0;
-
-
+var holderoffset = $(".holderbox").offset();
+var haikuoffset = $(".haikuholder").offset();
 
 
 
@@ -122,12 +122,9 @@ setInterval(function(){
 	changeplatyimage();
 	changeleftinfo();
 
-	console.log($(".holderbox").offset());
 
 },3000);
 
-console.log("window width");
-console.log($(window).width());
 
 
 if ($(window).width() < 1000){
@@ -140,83 +137,93 @@ if ($(window).width() < 1000){
 	$('nav').remove();
 }
 
- 	  $(".righttriangle").offset(function(){
-        newPos = new Object();
-        var target = $(".holderbox").offset();
-        newPos.left = target.left + 0.7*($(".holderbox").width());
-        newPos.top = target.top + 0.1*($(".holderbox").height());
-        return newPos;
-      });
+	
+ //IMPORTANT......*****
+ //Below is how I was trying to do the offset function. It would
+ //offset once on page load, and then on window resize it would offset
+ //again. For some reason, I do not know why(!) when I put this on my
+ //server it did not work. So I have to make a set interval function and
+ //set the position every n milliseconds. This is a particularly intensive
+ //way of setting position which I REALLY don't like. There were other strange
+ //problems which I didn't understand, such as when I update my send table the 
+ //positioned elements would slide down the page by the length of the append. This
+ //I consider spooky as offset should be calculated from the top (!). I also thought of
+ //doing an on-change event for when the offset parent changes position but
+ //apparently this is not possible
+ //  (http://stackoverflow.com/questions/355015/jquery-event-to-detect-when-element-position-changes)
+ //I've wrapped the offsets in if conditions testing if the offset values have changed to make
+ //it a LITTLE less computationally intensive.
+
+
+
+
+ //	  $(".righttriangle").offset(function(){
+ //       newPos = new Object();
+ //       var target = $(".holderbox").offset();
+ //       newPos.left = target.left + 0.7*($(".holderbox").width());
+ //       newPos.top = target.top + 0.1*($(".holderbox").height());
+ //       console.log($(".holderbox").offset());
+ //       console.log($(newPos));
+ //       return newPos;
+ //     });
   
-	$( window ).resize(function() {
-	    $(".righttriangle").offset(function(){
-	        newPos = new Object();
-	        var target = $(".holderbox").offset();
-	        newPos.left = target.left + 0.7*($(".holderbox").width());
-	        newPos.top = target.top + 0.1*($(".holderbox").height());
-	        return newPos;
-	    });
-	});
+//	$( window ).resize(function() {
+//	    $(".righttriangle").offset(function(){
+//	        newPos = new Object();
+//	        var target = $(".holderbox").offset();
+//	        console.log($(".holderbox").offset());
+//	        newPos.left = target.left + 0.7*($(".holderbox").width());
+//	        newPos.top = target.top + 0.1*($(".holderbox").height());
+//	        console.log($(newPos));
+//	        return newPos;
+//	    });
+//	});
 
 
+	setInterval(function(){
+		var holderoffset = $(".holderbox").offset();
+		var haikuoffset = $(".haikuholder").offset();
+		
+		if (holderoffset!=$(".holderbox").offset()){
+			holderoffset = $(".holderbox").offset();
+		 	  $(".righttriangle").offset(function(){
+		        newPos = new Object();
+		        var target = $(".holderbox").offset();
+		        newPos.left = target.left + 0.7*($(".holderbox").width());
+		        newPos.top = target.top + 0.1*($(".holderbox").height());
+		        console.log($(".holderbox").offset());
+		        console.log($(newPos));
+		        return newPos;
+		      });
 
-    $(".lefttriangle").offset(function(){
-        newPos = new Object();
-        var target = $(".holderbox").offset();
-        newPos.left = target.left + 0.1*($(".holderbox").width());
-        newPos.top = target.top + 0.1*($(".holderbox").height());
-        return newPos;
-    });
+		      $(".lefttriangle").offset(function(){
+		        newPos = new Object();
+		        var target = $(".holderbox").offset();
+		        newPos.left = target.left + 0.1*($(".holderbox").width());
+		        newPos.top = target.top + 0.1*($(".holderbox").height());
+		        return newPos;
+		       });
 
-	$( window ).resize(function() {
-	    $(".lefttriangle").offset(function(){
-	        newPos = new Object();
-	        var target = $(".holderbox").offset();
-	        newPos.left = target.left + 0.1*($(".holderbox").width());
-	        newPos.top = target.top + 0.1*($(".holderbox").height());
-	        return newPos;
-	    });
-	});
+		      $(".circle").offset(function(){
+		        newPos = new Object();
+		        var target = $(".holderbox").offset();
+		        newPos.left = target.left + 0.4*($(".holderbox").width());
+		        newPos.top = target.top + 0.05*($(".holderbox").height());
+		        return newPos;
+		      });
+		}
 
-
-    $(".circle").offset(function(){
-        newPos = new Object();
-        var target = $(".holderbox").offset();
-        newPos.left = target.left + 0.4*($(".holderbox").width());
-        newPos.top = target.top + 0.05*($(".holderbox").height());
-        return newPos;
-    });
-
-	$( window ).resize(function() {
-	    $(".circle").offset(function(){
-	        newPos = new Object();
-	        var target = $(".holderbox").offset();
-	        newPos.left = target.left + 0.4*($(".holderbox").width());
-	        newPos.top = target.top + 0.05*($(".holderbox").height());
-	        return newPos;
-	    });
-	});
-
-
-
-    $(".haiku").offset(function(){
-        newPos = new Object();
-        var target = $(".haikuholder").offset();
-        newPos.left = target.left + $('.haikuholder').width()/2 - 236;// + 50; //+ 1.25*(($(".haikuholder").width())-500)/2;
-        newPos.top = target.top;
-        return newPos;
-    });
-
-	$( window ).resize(function() {
-	    $(".haiku").offset(function(){
-	        newPos = new Object();
-	        var target = $(".haikuholder").offset();
-	        newPos.left = target.left + $('.haikuholder').width()/2 - 236;// + 50; //+ 1.25*(($(".haikuholder").width())-500)/2;
-	        newPos.top = target.top;
-	        return newPos;
-	    });
-	});
-
+		if (haikuoffset!=$(".haikuholder").offset()){
+			holderoffset = $(".haikuholder").offset();	
+		      $(".haiku").offset(function(){
+		        newPos = new Object();
+		        var target = $(".haikuholder").offset();
+		        newPos.left = target.left + $('.haikuholder').width()/2 - 236;// + 50; //+ 1.25*(($(".haikuholder").width())-500)/2;
+		        newPos.top = target.top;
+		        return newPos;
+	      	  });
+		}
+	},200);
 
 
 
@@ -306,7 +313,7 @@ function litwohighlight(){
 
 function smoothscroll(variable){
 	var thisTarget = $(variable).find(">:first-child").attr('href');
-	console.log(thisTarget);
+	//console.log(thisTarget);
 	//console.log(variable);
 	//console.log(thisTarget.offset());
 	var targetOffset = $(thisTarget).offset().top - 49;
@@ -407,7 +414,11 @@ $("#lithree").on("click",function(){
 
 */
 
-
+/*The below was an attempt to resize the blank hanging space at the end of
+the body. The issue here is that I'm appending the canvases to the end of the body
+which increases the height. Since I'm having trouble moving the canvases dynamically on
+page load, this does not get reset properly so the below cannot run properly. (Not sure
+how to run this AFTER the canvases are offset).*/
 /*
     var bodyheight = $("body:last-child").offset().top + $("body:last-child").height();
     $("body").height(bodyheight);
