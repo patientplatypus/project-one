@@ -14,12 +14,12 @@ var scrollcounter = 0;
 var linkclicked = 0;
 var holderoffset = $(".holderbox").offset();
 var haikuoffset = $(".haikuholder").offset();
+$("#1").css("opacity","1.0");
 
 
 
 
-
-$(document).ready(function(evt) {
+$(document).ready(function() {
 
     //AJAX request to send message to server
 	
@@ -75,24 +75,20 @@ $(document).ready(function(evt) {
     	changeplatyimage();
     });
 
+    //Circle here doesn't do anything. Ran out of time.
+
     $(".circle").on("click",function(e){
     });
 
 
 
-$("#1").css("opacity","1.0");
 
 function changeplatyimage(){
 
 	$(".platyimgright").each(function(){
 		if ($(this).attr("id") == imagenumber){
 			$(this).css("opacity", 1.0);
-			//console.log($(this).attr("src"));
 			$(".platyimg").attr("src",$(this).attr("src"));
-				//function(){
-				//var dummyattr = $(this).attr("src");
-				//return dummyattr.toString();
-			//});
 		}else{
 			$(this).css("opacity", 0.5);
 		}
@@ -244,8 +240,6 @@ $(".lithree").on("click",function(){
 
 });
 
-
-
 $(window).scroll(function(){
 //	$("id").each(function{
 //		if (($(this).offset().top<=$(window).scrollTop() + 50) && ($(this).offset().top + $(this).height() > $(window).scrollTop() + 50)){
@@ -286,6 +280,7 @@ $(window).scroll(function(){
 
 
 
+
 function lionehighlight(){
 	if (!(($(".navonebutton")).length>0)){
 		$(".expandingbuttons").append("<div class='navonebutton'></div>");		
@@ -313,7 +308,7 @@ function litwohighlight(){
 
 function smoothscroll(variable){
 	var thisTarget = $(variable).find(">:first-child").attr('href');
-	//console.log(thisTarget);
+	console.log(thisTarget);
 	//console.log(variable);
 	//console.log(thisTarget.offset());
 	var targetOffset = $(thisTarget).offset().top - 49;
@@ -328,7 +323,7 @@ $("#lione").on("click",function(){
 	//alert("hellothere");
 	//lionehighlight();
 	smoothscroll("#lione");
-
+	lionehighlight();
 });
 
 
@@ -338,8 +333,8 @@ $("#litwo").on("click",function(){
 	//alert("hellothere");
 	//litwohighlight();
 	smoothscroll("#litwo");
+	litwohighlight();
 });
-
 
 $(".black_overlay").on("click",function(){
 	$(".black_overlay").css("display", "none");
@@ -431,7 +426,7 @@ how to run this AFTER the canvases are offset).*/
     });
 
 */
-    $(".expandingbuttons").remove();
+ //   $(".expandingbuttons").remove();
 
 
 });

@@ -133,6 +133,8 @@ var w = function( p ) {
       counter = 0;
     }
 
+   // console.log("xvalue " + xvalue + " yvalue " + yvalue + " fillvalue " + fillvalue + " counter " + counter);
+
     c = p.color(fillvalue%50,fillvalue%255,fillvalue%255, fillvalue%50);
     p.fill(c);
     p.rect(xvalue,yvalue,5,5);
@@ -159,6 +161,7 @@ if (x.length>0 && linkpressed!=1){
    $(".linkone").offset(function(){
         newPos = new Object();
         var target = $("#lione").offset();
+        //console.log(target);
         newPos.left = target.left;
         newPos.top = target.top + 0.75*($("#lione").height()); ;
         return newPos;
@@ -181,6 +184,7 @@ if (y.length>0 && linkpressed!=2){
     $(".linktwo").offset(function(){
         newPos = new Object();
         var target = $("#litwo").offset();
+        //console.log(target);
         newPos.left = target.left;
         newPos.top = target.top + 0.75*($("#litwo").height()); ;
         return newPos;
@@ -202,6 +206,7 @@ if (z.length>0 && linkpressed!=3){
     $(".linkthree").offset(function(){
         newPos = new Object();
         var target = $("#lithree").offset();
+        //console.log(target);
         newPos.left = target.left + 0.2*($("#lithree").width());
         newPos.top = target.top + 0.75*($("#lithree").height()); 
         return newPos;
@@ -213,7 +218,7 @@ if (z.length>0 && linkpressed!=3){
 
 
 
-}, 200);
+}, 100);
 
 
 
