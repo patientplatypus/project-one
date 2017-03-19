@@ -10,8 +10,11 @@ body {
   font-family: 'Rubik Mono One', sans-serif;
   display:inline-block;
   float:left;
+  font-size: 15px;
   /* width:100%; */
 }
+
+
 
 
 .platysoft{
@@ -49,8 +52,8 @@ and I don't know why.*/
 }
 
 .treeplatypus {
-	text-align: center;
-	font-size: 23px;
+  text-align: center;
+  font-size: 23px;
 }
 
 
@@ -81,7 +84,7 @@ header {
 
 header h1 {
   font-size:15px;
-	display: inline-block;
+  display: inline-block;
 }
 
 nav {
@@ -100,7 +103,7 @@ a a:hover, a:active a:link, a:visited {
 
 nav ul li{
   display:inline-block;
-	position:relative;
+  position:relative;
   color: #222;
   padding:2rem 1rem;
 }
@@ -118,57 +121,61 @@ img {
 }
 
 .image {
-	height:95%;
+  height:95%;
   padding: 0; 
   border-radius: 8px;
   overflow: hidden;
 }
 
-.imagecontainer{
+.aboutcontainer{
   min-width: 100%;
   margin-bottom: 10px;
-	margin-top: 50px;
-	float:left;
-	color:white;
-	background-color:black;
+  margin-top: 50px;
+  float:left;
+  color:white;
+  background-color:black;
   z-index: 5;
+  font-size: 30px;
  }
 
+.aboutcontainer h3{
+  font-size: 40px;
+}
 
 .container{
-	margin-top:1%;
-	margin-bottom:1%;
-	width:100%;
-	float:left;
-	color:white;
-	background-color:black;
-	border-color:green;
-	border-style:solid;
-	border-width: 5px;
-	border-radius: 8px;
+  margin-top:1%;
+  margin-bottom:1%;
+  width:100%;
+  float:left;
+  color:white;
+  background-color:black;
+  border-color:green;
+  border-style:solid;
+  border-width: 5px;
+  border-radius: 8px;
 }
 
 h3{
-	background-color:grey;
+  background-color:grey;
   background-size: auto;
   width:100%;
 }
 
 .expandingbuttons{
-	height:100px;
-	width:100px;
-	display:inline-block;
-	float:right;
-	vertical-align: top;
+  height:100px;
+  width:100px;
+  display:inline-block;
+  float:right;
+  vertical-align: top;
 }
 
 form {
-	margin-top: 50px;
+  margin-top: 50px;
 }
 
 
 .form-control {
- 	width: 100%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -180,35 +187,24 @@ form {
 }
 
 .platy { 
- /* Good browsers */
   opacity: 0;
 }
 
-
-input[type=text], select {
-  width: 100%;
+textarea {
+  width:95%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background-color:black;
-  color:green;
-}
-
-textarea, select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   background-color:black;
   color:green;
   float:left;
+  display:block;
+  margin-right: auto;
+  margin-right: auto;
 }
+
 
 input[type=submit] {
   width: 20%;
@@ -225,30 +221,30 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+/*
 span {
   display: block;
   overflow: hidden;
   padding: 0 4px 0 6px
 }
+*/
 
-.textbox {
-	width:95%;
-  display:block;
-  margin-right: auto;
-  margin-right: auto;
-}
+
 
 .checkname {
-	float:left;
+  float:left;
 }
 
 .about{
-	position:relative;
+  position:relative;
 }
+
+/*
 
 label {
   float: left
 }
+*/
 
 .mainimage{
   position:relative;
@@ -271,14 +267,12 @@ label {
 }
 
 .platyimgright{
-	/* border-collapse: separate; */
-	width:30%;
-	height:30%;
-	align-content: center;
-	border-color: green;
-	border-style: solid;
-	border:10px;
-	border-radius: 12px;
+  width:30%;
+  height:30%;
+  border-color: green;
+  border-style: solid;
+  border:10px;
+  border-radius: 12px;
   opacity: 0.5;
 }
 
@@ -342,17 +336,14 @@ label {
   margin-top: 10px;
   margin-bottom: 10px;
   max-height: auto;
- /* min-height: 360px;
-  max-height: 500px; */
 }
 
 .alignrow {
   margin-left: auto;
   margin-right: auto; 
   min-width: 1200px;
-  /*overflow: auto;*/  
 }
 
 .zindexset {
-	z-index: 3000;
+  z-index: 3000;
 }

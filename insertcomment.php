@@ -1,14 +1,33 @@
 <?php 
 		
 
+
+
+		$host = 'localhost';
+		$user = 'qeigzeig_pweyand';
+		$pswd = 'X4|J;mnH3x]H:xX';
+		//$pswd = 'Fvnjtyb1!!';
+		$datb = 'qeigzeig_defaultmain';
+
+ 		$db = mysqli_connect($host,$user,$pswd,$datb);
+
+ 		if (mysqli_connect_errno())
+ 		{
+ 			printf("Connect failed:$s\n", mysqli_connect_errno());
+ 			exit();
+ 		}
+
+
+
+
 		$users_name = $_POST['name'];
 		$users_email = $_POST['email'];
 		$users_comment = $_POST['comment']; 
 
-	//	print($users_name);
-	//	print($users_email);
-	//	print($users_comment);
-	//	var_dump($_GET, $_POST);
+		print($users_name);
+		print($users_email);
+		print($users_comment);
+		var_dump($_GET, $_POST);
 	//	exit;
 
 		

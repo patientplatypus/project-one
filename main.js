@@ -14,6 +14,11 @@ var scrollcounter = 0;
 var linkclicked = 0;
 
 
+
+
+
+
+
 $(document).ready(function(evt) {
 
     //AJAX request to send message to server
@@ -23,11 +28,27 @@ $(document).ready(function(evt) {
 		var sendmessage = $.ajax({
 	        type: 'POST',
 	        url: 'insertcomment.php',
-	        data: $('form').serialize()
+	        data: $('form').serialize(),
+	        error:function(data){
+				alert("error occured"); //===Show Error Message====
+			}
 	    });
-		sendmessage.done(function(msg) {
+
+	    sendmessage.done(function(){
+	    	console.log("message sent");
+	    });
+
+		var receivemessage = $.ajax({
+			url: 'outputcomment.php',
+            type: 'GET',
+            dataType: "html",
+        });
+
+        receivemessage.done(function(msg) {
 	  		$(".sentmessage").html( msg );
 		});
+
+		return false;
 	});
 
 	//end AJAX code
@@ -57,9 +78,6 @@ $(document).ready(function(evt) {
     $(".circle").on("click",function(e){
     });
 
-document.querySelector("canvas").addEventListener("click",function(){
-    //alert("canvas clicked");
-});
 
 
 $("#1").css("opacity","1.0");
@@ -122,16 +140,14 @@ if ($(window).width() < 1000){
 	$('nav').remove();
 }
 
-
-
-    $(".righttriangle").offset(function(){
+ 	  $(".righttriangle").offset(function(){
         newPos = new Object();
         var target = $(".holderbox").offset();
         newPos.left = target.left + 0.7*($(".holderbox").width());
         newPos.top = target.top + 0.1*($(".holderbox").height());
         return newPos;
-    });
-
+      });
+  
 	$( window ).resize(function() {
 	    $(".righttriangle").offset(function(){
 	        newPos = new Object();

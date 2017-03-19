@@ -257,6 +257,7 @@ var myp5 = new p5(b, '.bezier');
 $(document).ready(function() {
 
   
+});
 
         console.log($(window).width());
 
@@ -273,7 +274,6 @@ $(document).ready(function() {
    $(".bezier").css('position', 'relative');
    $(".bezier").css('z-index', 3000);
 
-});
 
 }
 
