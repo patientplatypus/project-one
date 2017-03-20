@@ -44,7 +44,6 @@
 
 
 <div class="aboutcontainer col-md-12">
-
 	<div class="platysoft image col-md-4">
 		<img src="softplatypus.jpg">
 	</div>
@@ -193,35 +192,39 @@
 
 
 
-<div class="writeus container col-md-12">
+<div class="writeus container col-md-6">
 
 
 </div>
 
-<form method='post'>
-    <div class="form-group row">
-      <label for="name" class="col-md-1 col-form-label">Name</label>
-      <div class="col-md-10">
-        <input type="name" name="name" class="form-control" id="name" placeholder="Name">
+
+<div class="formcontainer">
+  <form method='post'>
+      <div class="form-group row">
+        <label for="name" class="col-md-1 col-form-label">Name</label>
+        <div class="col-md-10">
+          <input type="name" name="name" class="form-control" id="name" placeholder="Name">
+        </div>
+  	  <div class="checkname col-md-1"></div>
       </div>
-	  <div class="checkname col-md-1"></div>
-    </div>
 
-	<div class="form-group row">
-      <label for="email" class="col-md-1 col-form-label">Email</label>
-      <div class="col-md-10">
-        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+  	<div class="form-group row">
+        <label for="email" class="col-md-1 col-form-label">Email</label>
+        <div class="col-md-10">
+          <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+        </div>
+  	  <div class="checkemail col-md-1"></div>
       </div>
-	  <div class="checkemail col-md-1"></div>
+
+  <p>write a comment!</p>
+    <div class="textbox">
+    	<textarea name="comment" id="textarea"></textarea>
     </div>
+    <input type="submit" name="button" id="button" value="Send" />
 
-<p>write a comment!</p>
-  <div class="textbox">
-  	<textarea name="comment" id="textarea"></textarea>
-  </div>
-  <input type="submit" name="button" id="button" value="Send" />
+  </form>
+</div>
 
-</form>
 
 <div class="receivemessage"></div>
 

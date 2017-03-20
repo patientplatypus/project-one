@@ -56,84 +56,6 @@ $(document).ready(function() {
 
 
 
-
-	//functions changing the platypus images and information
-	//called by arrow keys, clicked pictures and the timer.
-
-	function changeplatyimage(){
-
-		$(".platyimgright").each(function(){
-			if ($(this).attr("id") == imagenumber){
-				$(this).css("opacity", 1.0);
-				$(".platyimg").attr("src",$(this).attr("src"));
-			}else{
-				$(this).css("opacity", 0.5);
-			}
-		});
-	}
-
-	function changeleftinfo(){
-		$(".leftinfo").css("display", "none");
-		leftinfonumber = ".platy" + imagenumber.toString();
-		$(leftinfonumber).css("display", "inline-block");
-	}
-
-
-
-	//On clicking the triangles it calls functions that change
-	//the info boxes about the platypuses and changes the middle
-	//platypus image. 
-
-    $(".righttriangle").on("click",function(e){
-	    if (imagenumber===6){
-			imagenumber=1;
-		}else{
-			imagenumber = imagenumber + 1;
-		}
-		changeleftinfo();
-    	changeplatyimage();
-    });
-
-    $(".lefttriangle").on("click",function(e){
-    	if (imagenumber===1){
-			imagenumber=6;
-		}else{
-			imagenumber = imagenumber - 1;
-		}
-        changeleftinfo();
-    	changeplatyimage();
-    });
-
-    //Circle here doesn't do anything. Ran out of time.
-
-    $(".circle").on("click",function(e){
-    });
-
-    //Changes the middle image when clicking on a right thumbnail.
-
-	$(".platyimgright").on("click",function(){
-		imagenumber = parseInt($(this).attr("id"));
-		changeplatyimage();
-		changeleftinfo();
-	});
-
-	//changes the middle picture and platypus info on a timer
-
-	setInterval(function(){
-
-		if (imagenumber===6){
-			imagenumber=1;
-		}else{
-			imagenumber = imagenumber + 1;
-		}
-
-		changeplatyimage();
-		changeleftinfo();
-
-
-	},5000);
-
-
 	//calls a hamburger menu if the window width is less than 1000px
 
 	if ($(window).width() < 1000){
@@ -200,8 +122,8 @@ $(document).ready(function() {
 		        var target = $(".holderbox").offset();
 		        newPos.left = target.left + 0.7*($(".holderbox").width());
 		        newPos.top = target.top + 0.1*($(".holderbox").height());
-		        console.log($(".holderbox").offset());
-		        console.log($(newPos));
+		     //   console.log($(".holderbox").offset());
+		     //   console.log($(newPos));
 		        return newPos;
 		      });
 
@@ -378,6 +300,93 @@ $(document).ready(function() {
 		//I don't understand this.
 		return false;
 	});
+
+
+
+
+
+
+	//functions changing the platypus images and information
+	//called by arrow keys, clicked pictures and the timer.
+
+	function changeplatyimage(){
+
+		$(".platyimgright").each(function(){
+			if ($(this).attr("id") == imagenumber){
+				$(this).css("opacity", 1.0);
+				$(".platyimg").attr("src",$(this).attr("src"));
+			}else{
+				$(this).css("opacity", 0.5);
+			}
+		});
+	}
+
+	function changeleftinfo(){
+		$(".leftinfo").css("display", "none");
+		leftinfonumber = ".platy" + imagenumber.toString();
+		$(leftinfonumber).css("display", "inline-block");
+	}
+
+	//On clicking the triangles it calls functions that change
+	//the info boxes about the platypuses and changes the middle
+	//platypus image. 
+
+	//thanks to Dirk for fixing the race condition caused by loading
+	//the canvas functions KUDOS KUDOS KUDOS
+
+	console.log($(".righttriangle"));
+
+    $("html").on("click",".righttriangle", function(){
+	    if (imagenumber===6){
+			imagenumber=1;
+		}else{
+			imagenumber = imagenumber + 1;
+		}
+		changeleftinfo();
+    	changeplatyimage();
+    	console.log(imagenumber);    	
+    });
+
+    $("html").on("click", ".lefttriangle", function(){
+
+    	if (imagenumber===1){
+			imagenumber=6;
+		}else{
+			imagenumber = imagenumber - 1;
+		}
+        changeleftinfo();
+    	changeplatyimage();
+    	console.log(imagenumber);
+    });
+
+    //Circle here doesn't do anything. Ran out of time.
+
+    $(".circle").on("click",function(e){
+    });
+
+    //Changes the middle image when clicking on a right thumbnail.
+
+	$(".platyimgright").on("click",function(){
+		imagenumber = parseInt($(this).attr("id"));
+		changeplatyimage();
+		changeleftinfo();
+	});
+
+	//changes the middle picture and platypus info on a timer
+
+	setInterval(function(){
+
+		if (imagenumber===6){
+			imagenumber=1;
+		}else{
+			imagenumber = imagenumber + 1;
+		}
+
+		changeplatyimage();
+		changeleftinfo();
+
+
+	},5000);
 
 /*The below was an attempt to resize the blank hanging space at the end of
 the body. The issue here is that I'm appending the canvases to the end of the body

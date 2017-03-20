@@ -4,6 +4,29 @@ var s = function( p ) { // p could be any variable name
   var xover = 0;
   var canvas;
 
+  function moveRight(){
+      if (imagenumber===6){
+      imagenumber=1;
+    }else{
+      imagenumber = imagenumber + 1;
+    }
+    changeleftinfo();
+      changeplatyimage();
+      console.log(imagenumber);
+  }
+
+  function moveLeft(){
+      if (imagenumber===1){
+      imagenumber=6;
+    }else{
+      imagenumber = imagenumber - 1;
+    }
+        changeleftinfo();
+      changeplatyimage();
+      console.log(imagenumber);
+    }
+
+
   p.setup = function() {
     canvas = p.createCanvas(100, 100);
     canvas.class("lefttriangle");
@@ -56,9 +79,10 @@ var v = function( p ) {
     p.ellipse(50,50,xover,xover);
 
     xover = xover + 1;
-    fillvalue = fillvalue + 5;
+    fillvalue = fillvalue + 5;    
   };
 };
+
 var myp5 = new p5(v, '.circle');
 
 
