@@ -4,28 +4,6 @@ var s = function( p ) { // p could be any variable name
   var xover = 0;
   var canvas;
 
-  function moveRight(){
-      if (imagenumber===6){
-      imagenumber=1;
-    }else{
-      imagenumber = imagenumber + 1;
-    }
-    changeleftinfo();
-      changeplatyimage();
-      console.log(imagenumber);
-  }
-
-  function moveLeft(){
-      if (imagenumber===1){
-      imagenumber=6;
-    }else{
-      imagenumber = imagenumber - 1;
-    }
-        changeleftinfo();
-      changeplatyimage();
-      console.log(imagenumber);
-    }
-
 
   p.setup = function() {
     canvas = p.createCanvas(100, 100);
@@ -122,126 +100,122 @@ var myp5 = new p5(t, '.righttriangle');
 
 setInterval(function(){ 
 
-function drawflare(linkname){
+  function drawflare(linkname){
 
-var w = function( p ) { 
-  var xvalue = 0;
-  var yvalue = 0;
-  var fillvalue = 0;
-  var counter = 0;
-  p.setup = function() {
-    canvas = p.createCanvas(50, 20);
-    canvas.class("navflare " + linkname);
-    p.background(255,255,255,0);
-    p.noStroke();
+  var w = function( p ) { 
+    var xvalue = 0;
+    var yvalue = 0;
+    var fillvalue = 0;
+    var counter = 0;
+    p.setup = function() {
+      canvas = p.createCanvas(50, 20);
+      canvas.class("navflare " + linkname);
+      p.background(255,255,255,0);
+      p.noStroke();
+    };
+
+    p.draw = function() {
+
+      if (fillvalue > 500){
+        fillvalue = 0;
+      }
+
+      if (xvalue > 50){
+        xvalue = 0;
+        yvalue = yvalue + 3;
+      }
+      if (yvalue > 20){
+        yvalue = 0;
+        xvalue = 0;
+        counter = counter + 1;
+      }
+
+      if (counter >= 2){
+        p.clear();
+        counter = 0;
+      }
+
+     // console.log("xvalue " + xvalue + " yvalue " + yvalue + " fillvalue " + fillvalue + " counter " + counter);
+
+      c = p.color(fillvalue%50,fillvalue%255,fillvalue%255, fillvalue%50);
+      p.fill(c);
+      p.rect(xvalue,yvalue,5,5);
+      fillvalue = fillvalue + 20;
+      xvalue = xvalue + 3;
+    };
   };
 
-  p.draw = function() {
+  return w;
 
-    if (fillvalue > 500){
-      fillvalue = 0;
-    }
-
-    if (xvalue > 50){
-      xvalue = 0;
-      yvalue = yvalue + 3;
-    }
-    if (yvalue > 20){
-      yvalue = 0;
-      xvalue = 0;
-      counter = counter + 1;
-    }
-
-    if (counter >= 2){
-      p.clear();
-      counter = 0;
-    }
-
-   // console.log("xvalue " + xvalue + " yvalue " + yvalue + " fillvalue " + fillvalue + " counter " + counter);
-
-    c = p.color(fillvalue%50,fillvalue%255,fillvalue%255, fillvalue%50);
-    p.fill(c);
-    p.rect(xvalue,yvalue,5,5);
-    fillvalue = fillvalue + 20;
-    xvalue = xvalue + 3;
-  };
-};
-
-return w;
-
-}
-
-
-var x = document.querySelectorAll(".navonebutton");
-if (x.length>0 && linkpressed!=1){
-  var cleanupflare = document.querySelector( '.navflare' );
-  if (cleanupflare != null){
-    cleanupflare.parentNode.removeChild(cleanupflare);
   }
-  var linkname = "linkone";
-  var myp5 = new p5(drawflare(linkname), '.navonebutton');
-  linkpressed = 1;
-
-   $(".linkone").offset(function(){
-        newPos = new Object();
-        var target = $("#lione").offset();
-        //console.log(target);
-        newPos.left = target.left;
-        newPos.top = target.top + 0.75*($("#lione").height()); ;
-        return newPos;
-    });
-   $(".linkone").css('position', 'relative');
-   $(".linkone").css('z-index', 2000);
-}
 
 
-var y = document.querySelectorAll(".navtwobutton");
-if (y.length>0 && linkpressed!=2){
-  var cleanupflare = document.querySelector( '.navflare' );
-  if (cleanupflare != null){
-    cleanupflare.parentNode.removeChild(cleanupflare);
+  var x = document.querySelectorAll(".navonebutton");
+  if (x.length>0 && linkpressed!=1){
+    var cleanupflare = document.querySelector( '.navflare' );
+    if (cleanupflare != null){
+      cleanupflare.parentNode.removeChild(cleanupflare);
+    }
+    var linkname = "linkone";
+    var myp5 = new p5(drawflare(linkname), '.navonebutton');
+    linkpressed = 1;
+
+     $(".linkone").offset(function(){
+          newPos = new Object();
+          var target = $("#lione").offset();
+          //console.log(target);
+          newPos.left = target.left;
+          newPos.top = target.top + 0.75*($("#lione").height()); ;
+          return newPos;
+      });
+     $(".linkone").css('position', 'relative');
+     $(".linkone").css('z-index', 2000);
   }
-  var linkname = "linktwo";
-  var myp5 = new p5(drawflare(linkname), '.navtwobutton');
-  linkpressed = 2;
 
-    $(".linktwo").offset(function(){
-        newPos = new Object();
-        var target = $("#litwo").offset();
-        //console.log(target);
-        newPos.left = target.left;
-        newPos.top = target.top + 0.75*($("#litwo").height()); ;
-        return newPos;
-    });
-   $(".linktwo").css('position', 'relative');
-   $(".linktwo").css('z-index', 2000);
-}
 
-var z = document.querySelectorAll(".navthreebutton");
-if (z.length>0 && linkpressed!=3){
-  var cleanupflare = document.querySelector( '.navflare' );
-  if (cleanupflare != null){
-    cleanupflare.parentNode.removeChild(cleanupflare);
+  var y = document.querySelectorAll(".navtwobutton");
+  if (y.length>0 && linkpressed!=2){
+    var cleanupflare = document.querySelector( '.navflare' );
+    if (cleanupflare != null){
+      cleanupflare.parentNode.removeChild(cleanupflare);
+    }
+    var linkname = "linktwo";
+    var myp5 = new p5(drawflare(linkname), '.navtwobutton');
+    linkpressed = 2;
+
+      $(".linktwo").offset(function(){
+          newPos = new Object();
+          var target = $("#litwo").offset();
+          //console.log(target);
+          newPos.left = target.left;
+          newPos.top = target.top + 0.75*($("#litwo").height()); ;
+          return newPos;
+      });
+     $(".linktwo").css('position', 'relative');
+     $(".linktwo").css('z-index', 2000);
   }
-  var linkname = "linkthree";
-  var myp5 = new p5(drawflare(linkname), '.navthreebutton');
-  linkpressed = 3;
 
-    $(".linkthree").offset(function(){
-        newPos = new Object();
-        var target = $("#lithree").offset();
-        //console.log(target);
-        newPos.left = target.left + 0.2*($("#lithree").width());
-        newPos.top = target.top + 0.75*($("#lithree").height()); 
-        return newPos;
-    });
-   $(".linkthree").css('position', 'relative');
-   $(".linkthree").css('z-index', 2000);
-}
+  var z = document.querySelectorAll(".navthreebutton");
+  if (z.length>0 && linkpressed!=3){
+    var cleanupflare = document.querySelector( '.navflare' );
+    if (cleanupflare != null){
+      cleanupflare.parentNode.removeChild(cleanupflare);
+    }
+    var linkname = "linkthree";
+    var myp5 = new p5(drawflare(linkname), '.navthreebutton');
+    linkpressed = 3;
 
-
-
-
+      $(".linkthree").offset(function(){
+          newPos = new Object();
+          var target = $("#lithree").offset();
+          //console.log(target);
+          newPos.left = target.left + 0.2*($("#lithree").width());
+          newPos.top = target.top + 0.75*($("#lithree").height()); 
+          return newPos;
+      });
+     $(".linkthree").css('position', 'relative');
+     $(".linkthree").css('z-index', 2000);
+  }
 }, 100);
 
 
@@ -283,16 +257,15 @@ $(window).scroll(function(){
 });
 
 
+var h = function( p ) { 
+  
   var text1 = "HAIKU";
   var text2 = "SWIMMING WITH FISHES";
   var text3 = "ALSO ENJOYS EATING THEM";
   var text4 = "A BROWN PLATYPUS";
   var words1 = text2.split("");
   var words2 = text3.split("");
-  var words3 = text4.split("");
-
-var h = function( p ) { 
- 
+  var words3 = text4.split(""); 
   var i = 10;
   var j = 0;
   var z = 10;

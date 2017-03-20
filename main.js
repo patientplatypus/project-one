@@ -15,6 +15,7 @@ var linkclicked = 0;
 var holderoffset = $(".holderbox").offset();
 var haikuoffset = $(".haikuholder").offset();
 var platyoffset = $(".platysoft").offset();
+//var htmlheight = $("html:last-child").offset().top + $("html:last-child").height();
 $("#1").css("opacity","1.0");
 
 
@@ -167,6 +168,13 @@ $(document).ready(function() {
 		    });	
 		}
 
+	//another attempt to fix page height. no dice.
+
+	//	if htmlheight != ($("html:last-child").offset().top + $("html:last-child").height()){
+	//		htmlheight = $("html:last-child").offset().top + $("html:last-child").height();
+    //		$("html").height(htmlheight);
+    		//$("html").height($("body").height());
+	//	}
 	},200);
 
 
@@ -393,18 +401,13 @@ the body. The issue here is that I'm appending the canvases to the end of the bo
 which increases the height. Since I'm having trouble moving the canvases dynamically on
 page load, this does not get reset properly so the below cannot run properly. (Not sure
 how to run this AFTER the canvases are offset).*/
-/*
-    var bodyheight = $("body:last-child").offset().top + $("body:last-child").height();
-    $("body").height(bodyheight);
-    $("html").height($("body").height());
+
 
     $(window).resize(function(){
 	   var bodyheight = $("body:last-child").offset().top + $("body:last-child").height();
 	   $("body").height(bodyheight);
 	   $("html").height($("body").height());
     });
-
-*/
 
 
 });

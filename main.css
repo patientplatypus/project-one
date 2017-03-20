@@ -1,5 +1,4 @@
 html body {
- /* height: auto;*/
   height:100%;
 }
 
@@ -16,28 +15,36 @@ body {
   display:inline-block;
   float:left;
   font-size: 15px;
-  /*height: auto;
-   width:100%; */
 }
 
-.writeus p {
-  font-style: italic;
-  color: red;  
+h3{
+  background-color:grey;
+  background-size: auto;
+  width:100%;
 }
+
+
+/*container for the drippy textbox above the submit form*/
+.writeus p{
+  text-align: center;
+  font-size: 30px;
+}
+
+.writeus h3{
+  font-family: 'Nosifer', cursive;
+  color: red;
+  text-align: center;
+  background-color:black;
+  font-size: 40px;  
+}
+
+/*styling for the output table from outputcomment.php*/
 
 table {
   table-layout: fixed; 
   width:100%;
   word-wrap: break-word;
 }
-/*
-
-.platypustable {
-  width:100%;
-  color: black;
-  background-color: white;
-}
-*/
 
 
 /*These are all the stylings 
@@ -52,7 +59,7 @@ with js doesnt work either.*/
 
 .aboutcontainer{
   min-width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   margin-top: 50px;
   height: auto;
   float:left;
@@ -67,24 +74,15 @@ with js doesnt work either.*/
   font-size: 40px;
 }
 
-/*
-.about{
-  width: 60%;
-  float:right;
-}
-*/
-
 .platy {
-  /*position:absolute; */
   float:right;
   opacity: 0;
   width:33%;
+  z-index: 1000;
 }
 
 
 .platysoft{
-
- /*position:absolute;*/
   width:33%;
 }
 
@@ -154,6 +152,8 @@ header h1 {
   display: inline-block;
 }
 
+/*start nav stuff*/
+
 nav {
   float:right;
   display:inline-block;
@@ -178,6 +178,7 @@ nav ul li{
 ul {
   transform: translate(-50%, 0);
 }
+/*end nav stuff*/
 
 img {
  /* display: block; */
@@ -208,12 +209,6 @@ img {
   border-radius: 8px;
 }
 
-h3{
-  background-color:grey;
-  background-size: auto;
-  width:100%;
-}
-
 .expandingbuttons{
   position: absolute;
   height:100px;
@@ -242,7 +237,7 @@ form {
 
 
 textarea {
-  width:95%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   border: 1px solid #ccc;
@@ -252,8 +247,10 @@ textarea {
   color:green;
   float:left;
   display:block;
+  /*
   margin-right: auto;
   margin-right: auto;
+  */
 }
 
 
@@ -272,28 +269,12 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-/*
-span {
-  display: block;
-  overflow: hidden;
-  padding: 0 4px 0 6px
-}
-*/
-
 
 
 .checkname {
   float:left;
 }
 
-
-
-/*
-
-label {
-  float: left
-}
-*/
 
 .mainimage{
   position:relative;
@@ -395,5 +376,22 @@ label {
 
 .zindexset {
   z-index: 3000;
+}
+
+.footer {
+  font-weight:normal;
+  font-family:Baloo, sans-serif;
+  background: gray;
+  font-size: 25px;
+  color: red;
+  text-align:center;
+  width: 100%;
+  height : auto;
+  background-color:grey;
+  display: inline-block;
+  left:0;
+  right:0;
+  top:0px;
+  bottom:0px;
 }
 

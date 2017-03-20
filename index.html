@@ -11,7 +11,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nosifer|Rubik+Mono+One|Baloo" rel="stylesheet">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   
@@ -20,12 +20,10 @@
 
 	<script language="javascript" type="text/javascript" src="p5.js"></script>
 
-
+ <meta charset="utf-8" />
 
 </head>
 <body>
-
-
 
 
 <header>
@@ -40,9 +38,6 @@
 </header>
 
 
-
-
-
 <div class="aboutcontainer col-md-12">
 	<div class="platysoft image col-md-4">
 		<img src="softplatypus.jpg">
@@ -51,7 +46,6 @@
 		<h3>About</h3>
     <p>Welcome to my site about the duck billed platypus, the most rad of all animals in the animal kingdom. Here you will find neat duck billed platypus facts (courtesy of <a href="http://listverse.com/2014/01/23/10-bizarre-facts-about-the-duck-billed-platypus/">listverse</a> where you can find more facts and pictures), duck billed platypus gifs and art! And if you do not think that duck billed platypus' are the best well then you should jump in a lake buddy! There you might meet a duck billed platypus and see how awesome they are. (Although I think they are more fond of rivers and streams).</p>
 	</div>
-
   <div class="platy image">
     <img class="platyimgtop" src="platypus.jpg">
   </div>
@@ -158,8 +152,7 @@
   </div>
 
   <div class="mainimage carousel align col-md-4">
-  	<img class="platyimg"
-    id="0" src="platypus1.jpg">
+  	<img class="platyimg" id="0" src="platypus1.jpg">
   </div>
   <div class="carousel align col-md-4">
     <img class="platyimgright" id="1" src="platypus1.jpg">
@@ -193,15 +186,16 @@
 
 
 <div class="writeus container col-md-6">
-
+  <p>Feel free to drop us a line! If you write something in the form below it will go to the server and output a result.</p>
+  <h3>WEIRD SCIENCE BRUV</h3>
 
 </div>
 
 
-<div class="formcontainer">
+<div class="formcontainer col-md-6">
   <form method='post'>
       <div class="form-group row">
-        <label for="name" class="col-md-1 col-form-label">Name</label>
+        <label for="name" class="col-md-2 col-form-label">Name</label>
         <div class="col-md-10">
           <input type="name" name="name" class="form-control" id="name" placeholder="Name">
         </div>
@@ -209,7 +203,7 @@
       </div>
 
   	<div class="form-group row">
-        <label for="email" class="col-md-1 col-form-label">Email</label>
+        <label for="email" class="col-md-2 col-form-label">Email</label>
         <div class="col-md-10">
           <input type="email" name="email" class="form-control" id="email" placeholder="Email">
         </div>
@@ -217,10 +211,14 @@
       </div>
 
   <p>write a comment!</p>
-    <div class="textbox">
-    	<textarea name="comment" id="textarea"></textarea>
+  <div class="textboxcontainer col-md-12">
+    <div class="spacing col-md-2"></div>
+    <div class="textbox col-md-10">
+    	<textarea name="comment" id="textarea" placeholder="Comment"></textarea>
     </div>
+  </div>
     <input type="submit" name="button" id="button" value="Send" />
+
 
   </form>
 </div>
@@ -229,17 +227,12 @@
 <div class="receivemessage"></div>
 
 
-
-
   <div class="treeplatypus white_content">
 	  <p>You were expecting a tree maybe? 
 	  <img class="platmeme" src="platmeme0.jpg">
 	  <p>Nope, it's a platypus.</p>
   </div>
   <div id="fade" class="black_overlay"></div>
-
-
-
 
 
 <div class="expandingbuttons">
@@ -257,11 +250,15 @@
 
   <script type="text/javascript" src="p5file.js"></script>
 
-
   <script language="javascript" type="text/javascript" src="main.js"></script>
 
   <link rel="stylesheet" type="text/css" href="main.css">
 
+<div class="footer">
+  <p>a huggy bear production</p>
+  <p>ʕ ⊃･ ◡ ･ ʔ⊃    ε=ε=ε=┏(ﾟロﾟ;)┛</p>
+</div>
 	
 </body>
+
 </html>
